@@ -18,8 +18,12 @@ class _RingScreenState extends State<RingScreen>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
-      reverseDuration: Duration(seconds: 1),
+      duration: Duration(
+        milliseconds: 400,
+      ), //для плавности можно поставить seconds:1
+      reverseDuration: Duration(
+        milliseconds: 400,
+      ), //для плавности можно поставить seconds:1
       value: 0.5,
     );
 
