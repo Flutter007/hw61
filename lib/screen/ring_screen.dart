@@ -20,8 +20,8 @@ class _RingScreenState extends State<RingScreen>
       vsync: this,
       duration: Duration(seconds: 1),
       reverseDuration: Duration(seconds: 1),
+      value: 0.5,
     );
-    _animationController.value = 0.65;
 
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed && count < 6) {
@@ -32,7 +32,7 @@ class _RingScreenState extends State<RingScreen>
         _animationController.forward();
       } else if (count == 6) {
         _animationController.stop();
-        _animationController.value = 0.65;
+        _animationController.value = 0.5;
       }
     });
   }
@@ -71,11 +71,11 @@ class _RingScreenState extends State<RingScreen>
           builder:
               (ctx, child) => RotationTransition(
                 alignment: Alignment.topCenter,
-                turns: Tween<double>(begin: -0.1, end: 0.1).animate(
+                turns: Tween<double>(begin: -0.09, end: 0.09).animate(
                   CurvedAnimation(
                     parent: _animationController,
-                    curve: Curves.fastOutSlowIn.flipped,
-                    reverseCurve: Curves.fastOutSlowIn.flipped,
+                    curve: Curves.linear,
+                    reverseCurve: Curves.linear.flipped,
                   ),
                 ),
                 child: child,
